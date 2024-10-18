@@ -1,0 +1,96 @@
+#!/bin/bash
+
+# Prepare testfile of size 1G
+fio --name=prepare --rw=write --size=1G --filename=testfile --bs=1M --ioengine=libaio --direct=1 --runtime=1 --time_based=1 --output=prepare_output.txt
+
+# Remove prepare job file
+rm prepare_output.txt
+
+# Task 1
+echo "Starting Task 1"
+
+percentages="0 12 25 38 50 63 75 88 100"
+
+for access_pattern in 'rw' 'randrw'; do
+  for pct in $percentages; do
+    output_file="task1_${access_pattern}_pct${pct}.txt"
+    echo "Running Task 1 with $access_pattern and write percentage $pct%"
+    for rep in {1..5}; do
+      filename_prefix="task1_${access_pattern}_pct${pct}_rep${rep}"
+      fio default.fio --rw=$access_pattern --rwmixwrite=$pct --write_bw_log=$filename_prefix --log_avg_msec=4000 --output=temp_output.txt
+      # Process the bw log file
+      bw_log_file="${filename_prefix}_bw.log"
+      if [ -f $bw_log_file ]; then
+        # Extract bandwidth data and append to output file
+        awk '{print $2}' $bw_log_file >> $output_file
+      fi
+      # Clean up
+      rm $bw_log_file
+    done
+    rm temp_output.txt
+  done
+done
+
+# Task 2
+echo "Starting Task 2"
+
+blocksizes="1k 2k 4k 8k 16k 32k 64k 128k 256k 512k 1024k"
+
+for bs in $blocksizes; do
+  output_file="task2_bs${bs}.txt"
+  echo "Running Task 2 with blocksize $bs"
+  for rep in {1..5}; do
+    filename_prefix="task2_bs${bs}_rep${rep}"
+    fio default.fio --bs=$bs --write_bw_log=$filename_prefix --log_avg_msec=4000 --output=temp_output.txt
+    # Process the bw log file
+    bw_log_file="${filename_prefix}_bw.log"
+    if [ -f $bw_log_file ]; then
+      awk '{print $2}' $bw_log_file >> $output_file
+    fi
+    rm $bw_log_file
+  done
+  rm temp_output.txt
+done
+
+# Task 3
+echo "Starting Task 3"
+
+output_file="task3.txt"
+
+for rep in {1..5}; do
+  filename_prefix="task3_rep${rep}"
+  fio default.fio --rw=write --bssplit=4k/30:16k/60:64k/10 --write_bw_log=$filename_prefix --write_lat_log=$filename_prefix --log_avg_msec=4000 --output=temp_output.txt
+  # Process the bw and lat log files
+  bw_log_file="${filename_prefix}_bw.log"
+  lat_log_file="${filename_prefix}_lat.log"
+  if [ -f $bw_log_file ] && [ -f $lat_log_file ]; then
+    # Paste the bandwidth and latency data side by side
+    paste <(awk '{print $2}' $bw_log_file) <(awk '{print $2}' $lat_log_file) >> $output_file
+  fi
+  # Clean up
+  rm $bw_log_file $lat_log_file
+  rm temp_output.txt
+done
+
+# Task 4
+echo "Starting Task 4"
+
+numjobs_list="1 2 4 6 8"
+
+for nj in $numjobs_list; do
+  output_file="task4_numjobs${nj}.txt"
+  echo "Running Task 4 with numjobs=$nj"
+  for rep in {1..5}; do
+    filename_prefix="task4_numjobs${nj}_rep${rep}"
+    fio default.fio --numjobs=$nj --write_bw_log=$filename_prefix --log_avg_msec=4000 --output=temp_output.txt
+    # Process the bw log file
+    bw_log_file="${filename_prefix}_bw.log"
+    if [ -f $bw_log_file ]; then
+      awk '{print $2}' $bw_log_file >> $output_file
+    fi
+    rm $bw_log_file
+  done
+  rm temp_output.txt
+done
+
+echo "All tasks completed."
