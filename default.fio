@@ -1,0 +1,13 @@
+[global]
+ioengine=libaio
+direct=1
+runtime=60
+time_based=1
+numjobs=1
+rwmixwrite=33
+bs=16k
+size=1G
+filename=testfile
+
+[test]
+rw=randrw
