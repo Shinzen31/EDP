@@ -1,0 +1,9 @@
+[test]
+name=test
+runtime=60s
+numjobs=1
+rwmixwrite=33
+bs=16k
+size=1G
+rw=randrw
+direct=1
