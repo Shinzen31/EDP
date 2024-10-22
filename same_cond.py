@@ -96,48 +96,48 @@ for k in [0, 12, 25, 38, 50, 63, 75, 88, 100]:
         
 # task2
 for k in [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]:
-     read_bw = []  
-     write_bw = []
+    read_bw = []  
+    write_bw = []
 
-     for i in [1, 2, 3, 4, 5]:
-         read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
-         write_file = f'valid/task2_{k}k.txt'
+    for i in [1, 2, 3, 4, 5]:
+        read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
+        write_file = f'valid/task2_{k}k.txt'
 
-         try:
-             df = pd.read_csv(read_file, header=None)
+        try:
+            df = pd.read_csv(read_file, header=None)
 
-             temp_read_bw = []
-             temp_write_bw = []
+            temp_read_bw = []
+            temp_write_bw = []
 
-             for index, row in df.iterrows():
-                 if row[2] == 0:  
-                     temp_read_bw.append(row[1])  
-                 elif row[2] == 1:  
-                     temp_write_bw.append(row[1])  
+            for index, row in df.iterrows():
+                if row[2] == 0:  
+                    temp_read_bw.append(row[1])  
+                elif row[2] == 1:  
+                    temp_write_bw.append(row[1])  
 
-             read_bw.append(temp_read_bw)
-             write_bw.append(temp_write_bw)
-             # print(f"Read bandwidth (task2, rep {i}):", read_bw[-1])
-             # print(f"Write bandwidth (task2, rep {i}):", write_bw[-1])
+            read_bw.append(temp_read_bw)
+            write_bw.append(temp_write_bw)
+            # print(f"Read bandwidth (task2, rep {i}):", read_bw[-1])
+            # print(f"Write bandwidth (task2, rep {i}):", write_bw[-1])
 
-         except FileNotFoundError:
-             print(f"File {read_file} not found")
-             continue
+        except FileNotFoundError:
+            print(f"File {read_file} not found")
+            continue
 
 
-     if len(read_bw) >= 2 and len(write_bw) >=2:
-         try:
-             f_statistic_r, p_value_r = stats.f_oneway(*read_bw)
-             f_statistic_w, p_value_w = stats.f_oneway(*write_bw)
-             with open(write_file, 'w') as f:
-                 print(f"F-statistic for read bandwidth (task2): {f_statistic_r}", file=f)
-                 print(f"P-value for read bandwidth (task2): {p_value_r}", file=f)
-                 print(f"F-statistic for write bandwidth (task2): {f_statistic_w}", file=f)
-                 print(f"P-value for read bandwidth (task2): {p_value_w}", file=f)
-         except ValueError as e:
-             print(f"Error in ANOVA: {e}")
-     else:
-         print(f"Not enough data for ANOVA (task2)")
+    if len(read_bw) >= 2 and len(write_bw) >=2:
+        try:
+            f_statistic_r, p_value_r = stats.f_oneway(*read_bw)
+            f_statistic_w, p_value_w = stats.f_oneway(*write_bw)
+            with open(write_file, 'w') as f:
+                print(f"F-statistic for read bandwidth (task2): {f_statistic_r}", file=f)
+                print(f"P-value for read bandwidth (task2): {p_value_r}", file=f)
+                print(f"F-statistic for write bandwidth (task2): {f_statistic_w}", file=f)
+                print(f"P-value for read bandwidth (task2): {p_value_w}", file=f)
+        except ValueError as e:
+            print(f"Error in ANOVA: {e}")
+    else:
+        print(f"Not enough data for ANOVA (task2)")
          
          
 
@@ -147,29 +147,29 @@ for k in [1, 2, 4, 6, 8]:
     write_bw = []
     
     for i in [1, 2, 3, 4, 5]:
-          read_file = f'data/task4_numjobs{k}_rep{i}_bw.1.log'
-          write_file = f'valid/task4_numjobs{k}.txt'
+        read_file = f'data/task4_numjobs{k}_rep{i}_bw.1.log'
+        write_file = f'valid/task4_numjobs{k}.txt'
 
-          try:
-              df = pd.read_csv(read_file, header=None)
+        try:
+            df = pd.read_csv(read_file, header=None)
 
-              temp_read_bw = []
-              temp_write_bw = []
+            temp_read_bw = []
+            temp_write_bw = []
 
-              for index, row in df.iterrows():
-                  if row[2] == 0:  
-                      temp_read_bw.append(row[1])  
-                  elif row[2] == 1:  
-                      temp_write_bw.append(row[1])  
+            for index, row in df.iterrows():
+                if row[2] == 0:  
+                    temp_read_bw.append(row[1])  
+                elif row[2] == 1:  
+                    temp_write_bw.append(row[1])  
 
-              read_bw.append(temp_read_bw)
-              write_bw.append(temp_write_bw)
-              # print(f"Read bandwidth (task4, rep {i}):", read_bw[-1])
-              # print(f"Write bandwidth (task4, rep {i}):", write_bw[-1])
+            read_bw.append(temp_read_bw)
+            write_bw.append(temp_write_bw)
+            # print(f"Read bandwidth (task4, rep {i}):", read_bw[-1])
+            # print(f"Write bandwidth (task4, rep {i}):", write_bw[-1])
 
-          except FileNotFoundError:
-              print(f"File {read_file} not found")
-              continue
+        except FileNotFoundError:
+            print(f"File {read_file} not found")
+            continue
 
 
     if len(read_bw) >= 2 and len(write_bw) >= 2:
