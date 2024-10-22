@@ -1,0 +1,4 @@
+F-statistic for read submission latency (task3): 0.05385011192974061
+P-value for read submission latency (task3): 0.994468180817263
+F-statistic for write submission latency (task3): 0.024934856814358353
+P-value for write submission latency (task3): 0.9987650309433226
