@@ -1,4 +1,4 @@
-F-statistic for read total latency (task3): 0.04810856141321454
-P-value for read total latency (task3): 0.9955494376666313
-F-statistic for write total latency (task3): 0.029256710903066127
-P-value for write total latency (task3): 0.9983100906275543
+F-statistic for read total latency (task3): 0.6344489199822145
+P-value for read total latency (task3): 0.6396056353123114
+F-statistic for write total latency (task3): 0.9161334385647755
+P-value for write total latency (task3): 0.4595297727896409
