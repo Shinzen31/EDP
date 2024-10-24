@@ -23,7 +23,7 @@ for access_pattern in 'rw' 'randrw'; do
     for rep in {1..5}; do
       filename_prefix="data/task1_${access_pattern}_pct${pct}_rep${rep}"
       fio default.fio --rw=$access_pattern --rwmixwrite=$pct \
-          --write_bw_log=$filename_prefix --log_avg_msec=4000 \
+          --write_bw_log=$filename_prefix --log_avg_msec=1000 \
           --eta=never --output=temp_output.txt
       # Process the bw log file
       bw_log_file="${filename_prefix}_test_bw.log"
@@ -48,7 +48,7 @@ for bs in $blocksizes; do
   echo "Running Task 2 with blocksize $bs"
   for rep in {1..5}; do
     filename_prefix="data/task2_bs${bs}_rep${rep}"
-    fio default.fio --bs=$bs --write_bw_log=$filename_prefix --log_avg_msec=4000 \
+    fio default.fio --bs=$bs --write_bw_log=$filename_prefix --log_avg_msec=1000 \
         --eta=never --output=temp_output.txt
     # Process the bw log file
     bw_log_file="${filename_prefix}_test_bw.log"
@@ -69,7 +69,7 @@ for rep in {1..5}; do
   filename_prefix="data/task3_rep${rep}"
   fio default.fio --rw=write --bssplit=4k/30:16k/60:64k/10 \
       --write_bw_log=$filename_prefix --write_lat_log=$filename_prefix \
-      --log_avg_msec=4000 --eta=never --output=temp_output.txt
+      --log_avg_msec=1000 --eta=never --output=temp_output.txt
   # Process the bw and lat log files
   bw_log_file="${filename_prefix}_test_bw.log"
   lat_log_file="${filename_prefix}_test_lat.log"
@@ -93,7 +93,7 @@ for nj in $numjobs_list; do
   for rep in {1..5}; do
     filename_prefix="data/task4_numjobs${nj}_rep${rep}"
     fio default.fio --numjobs=$nj --write_bw_log=$filename_prefix \
-        --log_avg_msec=4000 --eta=never \
+        --log_avg_msec=1000 --eta=never \
         --output=temp_output.txt
     # Process the bw log file
     bw_log_file="${filename_prefix}_test_bw.log"
