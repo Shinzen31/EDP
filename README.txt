@@ -19,3 +19,6 @@ valid/task1_randrw_pct100.txt
 valid/task2_128k.txt
 valid/task4_numjobs4.txt
 valid/task4_numjobs4.txt
+
+max perf mode:
+valid/task4_numjobs1.txt

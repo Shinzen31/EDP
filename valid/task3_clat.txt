@@ -1,4 +1,4 @@
-F-statistic for read completion latency (task3): 0.605368090940267
-P-value for read completion latency (task3): 0.6600620406223852
-F-statistic for write comletion latency (task3): 0.949743551408002
-P-value for write completion latency (task3): 0.4406488760980254
+F-statistic for read completion latency (task3): 0.5514061160239971
+P-value for read completion latency (task3): 0.6986058056044291
+F-statistic for write comletion latency (task3): 0.32581192762488
+P-value for write completion latency (task3): 0.8597526912518814
