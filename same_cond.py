@@ -373,25 +373,4 @@ if len(read_lat) >= 2 and len(write_lat) >= 2:
         print(f"Error in ANOVA: {e}")
 else:
     print(f"Not enough data for ANOVA (task3 submission latency)")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
