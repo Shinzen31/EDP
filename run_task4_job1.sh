@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Create data4 directory
-mkdir -p data4
-
 # Prepare testfile of size 1G
 fio --name=prepare --rw=write --size=1G --filename=testfile --bs=1M \
     --ioengine=libaio --direct=1 --runtime=1 --time_based=1 \
@@ -18,10 +15,10 @@ echo "Starting Task 4"
 numjobs_list="1"
 
 for nj in $numjobs_list; do
-  output_file="data4/task4_numjobs${nj}.txt"
+  output_file="data/task4_numjobs${nj}.txt"
   echo "Running Task 4 with numjobs=$nj"
   for rep in {1..5}; do
-    filename_prefix="data4/task4_numjobs${nj}_rep${rep}"
+    filename_prefix="data/task4_numjobs${nj}_rep${rep}"
     fio default.fio --numjobs=$nj --write_bw_log=$filename_prefix \
         --log_avg_msec=4000 --eta=never \
         --output=temp_output.txt
