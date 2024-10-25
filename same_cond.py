@@ -1,13 +1,14 @@
 import scipy.stats as stats
 import pandas as pd
 
+reps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # task1 read-write
 for k in [0, 12, 25, 38, 50, 63, 75, 88, 100]:
     read_bw = []  
     write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task1_rw_pct{k}_rep{i}_bw.1.log'
         write_file = f'valid/task1_rw_pct{k}.txt'
 
@@ -53,7 +54,7 @@ for k in [0, 12, 25, 38, 50, 63, 75, 88, 100]:
     read_bw = []  
     write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task1_randrw_pct{k}_rep{i}_bw.1.log'
         write_file = f'valid/task1_randrw_pct{k}.txt'
 
@@ -99,7 +100,7 @@ for k in [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]:
     read_bw = []  
     write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
         write_file = f'valid/task2_{k}k.txt'
 
@@ -146,7 +147,7 @@ for k in [1, 2, 4, 6, 8]:
     read_bw = []  
     write_bw = []
     
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task4_numjobs{k}_rep{i}_bw.1.log'
         write_file = f'valid/task4_numjobs{k}.txt'
 
@@ -193,7 +194,7 @@ for k in [1, 2, 4, 6, 8]:
 read_bw = []  
 write_bw = []
 
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_file = f'data/task3_rep{i}_bw.1.log'
     write_file = f'valid/task3_bw.txt'
 
@@ -240,7 +241,7 @@ else:
 read_lat = []
 write_lat = []
 
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_file = f'data/task3_rep{i}_lat.1.log'
     write_file = f'valid/task3_lat.txt'
 
@@ -286,7 +287,7 @@ else:
 read_lat = []
 write_lat = []
 
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_file = f'data/task3_rep{i}_clat.1.log'
     write_file = f'valid/task3_clat.txt'
 
@@ -333,7 +334,7 @@ else:
 read_lat = []
 write_lat = []
 
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_file = f'data/task3_rep{i}_slat.1.log'
     write_file = f'valid/task3_slat.txt'
 

@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import linregress
 
+reps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # task1 read-write
 med_bw_read = []
@@ -18,7 +19,7 @@ for k in pct:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task1_rw_pct{k}_rep{i}_bw.1.log'
         try:
             df = pd.read_csv(read_file, header=None)
@@ -85,7 +86,7 @@ for k in pct:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task1_randrw_pct{k}_rep{i}_bw.1.log'
         try:
             df = pd.read_csv(read_file, header=None)
@@ -151,7 +152,7 @@ for k in req_size:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
         try:
             df = pd.read_csv(read_file, header=None)
@@ -232,7 +233,7 @@ for k in parallel:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task4_numjobs{k}_rep{i}_bw.1.log'
         try:
             df = pd.read_csv(read_file, header=None)
@@ -295,7 +296,7 @@ for k in req_sizes:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
 
         try:
@@ -317,7 +318,7 @@ for k in req_sizes:
     avg_bw_write.append(np.mean(temp_write_bw))
     std_bw_write.append(np.std(temp_write_bw))        
 
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_file = f'data/task3_rep{i}_bw.1.log'
 
     try:
@@ -380,7 +381,7 @@ lat_read, clat_read, slat_read = [], [], []
 lat_write, clat_write, slat_write = [], [], []
 
 # total latency, completion latency, submission latency
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     try:
         df_lat = pd.read_csv(f'data/task3_rep{i}_lat.1.log', header=None)
         temp_read_lat = df_lat[df_lat[2] == 0][1].tolist()

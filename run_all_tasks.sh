@@ -20,7 +20,7 @@ for access_pattern in 'rw' 'randrw'; do
   for pct in $percentages; do
     output_file="data/task1_${access_pattern}_pct${pct}.txt"
     echo "Running Task 1 with $access_pattern and write percentage $pct%"
-    for rep in {1..5}; do
+    for rep in {1..10}; do
       filename_prefix="data/task1_${access_pattern}_pct${pct}_rep${rep}"
       fio default.fio --rw=$access_pattern --rwmixwrite=$pct \
           --write_bw_log=$filename_prefix --log_avg_msec=1000 \
@@ -46,7 +46,7 @@ blocksizes="1k 2k 4k 8k 16k 32k 64k 128k 256k 512k 1024k"
 for bs in $blocksizes; do
   output_file="data/task2_bs${bs}.txt"
   echo "Running Task 2 with blocksize $bs"
-  for rep in {1..5}; do
+  for rep in {1..10}; do
     filename_prefix="data/task2_bs${bs}_rep${rep}"
     fio default.fio --bs=$bs --write_bw_log=$filename_prefix --log_avg_msec=1000 \
         --eta=never --output=temp_output.txt
@@ -65,7 +65,7 @@ echo "Starting Task 3"
 
 output_file="data/task3.txt"
 
-for rep in {1..5}; do
+for rep in {1..10}; do
   filename_prefix="data/task3_rep${rep}"
   fio default.fio --rw=write --bssplit=4k/30:16k/60:64k/10 \
       --write_bw_log=$filename_prefix --write_lat_log=$filename_prefix \
@@ -90,7 +90,7 @@ numjobs_list="1 2 4 6 8"
 for nj in $numjobs_list; do
   output_file="data/task4_numjobs${nj}.txt"
   echo "Running Task 4 with numjobs=$nj"
-  for rep in {1..5}; do
+  for rep in {1..10}; do
     filename_prefix="data/task4_numjobs${nj}_rep${rep}"
     fio default.fio --numjobs=$nj --write_bw_log=$filename_prefix \
         --log_avg_msec=1000 --eta=never \

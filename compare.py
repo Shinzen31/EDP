@@ -1,6 +1,7 @@
 import scipy.stats as stats
 import pandas as pd
 
+reps =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # task1 read-write
 read_bw = []  
@@ -11,7 +12,7 @@ for k in [0, 12, 25, 38, 50, 63, 75, 88, 100]:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task1_rw_pct{k}_rep{i}_bw.1.log'
         try:
             df = pd.read_csv(read_file, header=None)
@@ -55,7 +56,7 @@ for k in [0, 12, 25, 38, 50, 63, 75, 88, 100]:
     temp_read_bw = []
     temp_write_bw = []
     
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task1_randrw_pct{k}_rep{i}_bw.1.log'
         try:
             df = pd.read_csv(read_file, header=None)
@@ -99,7 +100,7 @@ for k in [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
 
         try:
@@ -144,7 +145,7 @@ for k in [1, 2, 4, 6, 8]:
     temp_read_bw = []
     temp_write_bw = []
     
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task4_numjobs{k}_rep{i}_bw.1.log'
         
         try:
@@ -190,7 +191,7 @@ for k in [4, 16, 64]:
     temp_read_bw = []
     temp_write_bw = []
 
-    for i in [1, 2, 3, 4, 5]:
+    for i in reps:
         read_file = f'data/task2_bs{k}k_rep{i}_bw.1.log'
 
         try:
@@ -208,7 +209,7 @@ for k in [4, 16, 64]:
         read_bw.append(temp_read_bw)
         write_bw.append(temp_write_bw)
 
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_file = f'data/task3_rep{i}_bw.1.log'
 
     try:

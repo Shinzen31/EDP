@@ -1,9 +1,10 @@
 import scipy.stats as stats
 import pandas as pd
 
+reps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # task1 read-write
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_bw = []  
     write_bw = []
 
@@ -49,7 +50,7 @@ for i in [1, 2, 3, 4, 5]:
 
 
 # task1 random read-write
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_bw = []  
     write_bw = []
 
@@ -95,7 +96,7 @@ for i in [1, 2, 3, 4, 5]:
 
         
 # task2
-for i in [1, 2, 3, 4, 5]: 
+for i in reps: 
     read_bw = []  
     write_bw = []
 
@@ -142,7 +143,7 @@ for i in [1, 2, 3, 4, 5]:
          
 
 # task4
-for i in [1, 2, 3, 4, 5]:
+for i in reps:
     read_bw = []  
     write_bw = []
     
@@ -190,7 +191,7 @@ for i in [1, 2, 3, 4, 5]:
           
   
 # task3 bandwidth     
-for i in [1, 2, 3, 4, 5]: 
+for i in reps: 
     read_bw = []  
     write_bw = []
 
