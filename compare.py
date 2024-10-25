@@ -208,23 +208,23 @@ for k in [4, 16, 64]:
         read_bw.append(temp_read_bw)
         write_bw.append(temp_write_bw)
 
-    for i in [1, 2, 3, 4, 5]:
-        read_file = f'data/task3_rep{i}_bw.1.log'
+for i in [1, 2, 3, 4, 5]:
+    read_file = f'data/task3_rep{i}_bw.1.log'
 
-        try:
-            df = pd.read_csv(read_file, header=None)
-            for index, row in df.iterrows():
-                if row[2] == 0:  
-                    temp_read_bw.append(row[1])  
-                elif row[2] == 1:  
-                    temp_write_bw.append(row[1])  
+    try:
+        df = pd.read_csv(read_file, header=None)
+        for index, row in df.iterrows():
+            if row[2] == 0:  
+                temp_read_bw.append(row[1])  
+            elif row[2] == 1:  
+                temp_write_bw.append(row[1])  
 
-        except FileNotFoundError:
-            print(f"File {read_file} not found")
-            continue
+    except FileNotFoundError:
+        print(f"File {read_file} not found")
+        continue
         
-        read_bw.append(temp_read_bw)
-        write_bw.append(temp_write_bw)
+    read_bw.append(temp_read_bw)
+    write_bw.append(temp_write_bw)
 
 print(f"Read bandwidth (task3):", read_bw)
 print(f"Write bandwidth (task3):", write_bw)
