@@ -168,6 +168,7 @@ plt.scatter(req_size, med_bw_write, label='Median Write BW', color='magenta')
 
 plt.title('Read and Write Bandwidth with Median, Mean, and Std Dev')
 plt.xlabel('Request Size')
+plt.xscale('log')
 plt.ylabel('Bandwidth')
 plt.legend()
 plt.grid(True)
