@@ -1,0 +1,4 @@
+F-statistic for read bandwidth (task1): 17.357230900579943
+P-value for read bandwidth (task1): 5.32893758206786e-23
+F-statistic for write bandwidth (task1): 11.580260570300279
+P-value for read bandwidth (task1): 3.3401754941084454e-15
