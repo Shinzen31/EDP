@@ -22,6 +22,8 @@ python3 same_cond.py
 python3 compare.py
 # compare each test separately
 python3 compare_s.py
+# use mean value of each test (1 - 10) as the input row
+python3 anova_avg.py
 ```
 
 # calculate mean value and standard deviation, find median value, and apply the linear regression, then plot
